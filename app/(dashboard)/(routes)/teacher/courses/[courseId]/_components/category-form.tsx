@@ -24,11 +24,11 @@ import { Combobox } from "@/components/ui/combobox";
 interface CategoryFormProps {
   initialData: Course;
   courseId: string;
-  options: {label:string; value:string}[];
-};
+  options: { label: string; value: string }[];
+}
 
 const formSchema = z.object({
-  categoryId:z.string().min(1),
+  categoryId: z.string().min(1),
 });
 
 export const CategoryForm = ({
@@ -61,7 +61,9 @@ export const CategoryForm = ({
       toast.error("Something went wrong!");
     }
   };
-  const selectedOption=options.find((option)=>option.value===initialData.categoryId);
+  const selectedOption = options.find(
+    (option) => option.value === initialData.categoryId
+  );
 
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
@@ -100,10 +102,7 @@ export const CategoryForm = ({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Combobox 
-                        options={...options}
-                        {...field}
-                    />
+                    <Combobox options={options} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
