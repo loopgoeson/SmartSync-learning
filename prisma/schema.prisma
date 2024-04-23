@@ -53,6 +53,7 @@ updatedAt DateTime @updatedAt
 
 @@index([courseId])
 }
+
  model Chapter{
   id String @id @default(uuid())
   title String 
