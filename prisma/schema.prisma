@@ -25,7 +25,7 @@ chapters Chapter[]
 attachments Attachment[]
 purchases Purchase[]
 
-user User @relation(fields: [userId], references: [id], onDelete:Cascade)
+// user User @relation(fields: [userId], references: [id], onDelete:Cascade)
 
 createdAt DateTime @default(now())
 updatedAt DateTime @updatedAt
@@ -69,8 +69,8 @@ updatedAt DateTime @updatedAt
 
   userProgress UserProgress[]
 
-  createdAt DataTime @default(now())
-  updatedAt DataTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([courseId])
 
@@ -108,8 +108,8 @@ updatedAt DateTime @updatedAt
   courseId String
   course Course @relation(fields: [courseId], references: [id], onDelete:Cascade)
 
-  createdAt DataTime @default(now())
-  updatedAt DataTime @updatedAt()
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
 
   @@index([courseId])
  }
@@ -119,8 +119,8 @@ updatedAt DateTime @updatedAt
   userId String @unique
   stripeCustomerId String @unique
 
-  createdAt DataTime @default(now())
-  updatedAt DataTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
  
  }
