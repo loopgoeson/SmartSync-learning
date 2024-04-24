@@ -6,6 +6,7 @@ import { db } from "@/lib/db";
 import { ArrowLeft, LayoutDashboard } from "lucide-react";
 import { IconBadge } from "@/components/icon-badge";
 import { ChapterTitleForm } from "./components/chapter-title-form";
+import { ChapterDescriptionForm } from "./components/chapter-description-form";
 
 const ChapterIdPage = async ({
     params
@@ -75,6 +76,11 @@ const ChapterIdPage = async ({
                     </div>
                     <ChapterTitleForm 
                     initialData={chapter} 
+                    courseId={params.courseId}
+                    chapterId={params.chapterId}
+                    />
+                    <ChapterDescriptionForm
+                    initialData={chapter}
                     courseId={params.courseId}
                     chapterId={params.chapterId}
                     />
