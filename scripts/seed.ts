@@ -9,8 +9,8 @@ async function main(){
             {name:"Fitness"},
             {name:"Photography"},
             {name:"Accounting"},
-            {name:"Engineering"},
             {name:"Artificial Intelligence"},
+            {name:"Engineering"},
             {name:"Filming"}
           ]  
         });
