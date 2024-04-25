@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BookOpen } from "lucide-react";
 import { IconBadge } from "@/components/icon-badge";
 import { formatPrice } from "@/lib/format";
-//import { CourseProgress } from "./course-progress";
+
 
 interface CourseCardProps {
   id: string;
@@ -49,7 +49,7 @@ export const CourseCard = ({
           </section>
 
            {progress !== null ? (
-            
+
             <div>
             todo: progress component
             </div>
