@@ -1,8 +1,8 @@
 import { db } from "@/lib/db";
 import { Categories } from "./_components/categories";
 import { SearchInput } from "@/components/search-input";
-// import { CoursesList } from "@/components/courses-list";
-// import { getCourses } from "@/actions/get-courses";
+import { CoursesList } from "@/components/courses-list";
+import { getCourses } from "@/actions/get-courses";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
@@ -26,10 +26,10 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
     },
   });
 
-//   //const courses = await getCourses({
-//     userId,
-//     ...searchParams,
-//   });
+    const courses = await getCourses({
+    userId,
+    ...searchParams,
+  });
 
   return (
     <>
@@ -38,7 +38,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
       </section>
       <section className="p-6 space-y-6">
         <Categories items={categories} />
-       {/* // <CoursesList items={courses} /> */}
+        <CoursesList items={courses} /> 
       </section>
     </>
   );
