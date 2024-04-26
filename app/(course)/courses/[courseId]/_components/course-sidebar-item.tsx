@@ -43,7 +43,7 @@ export const CourseSidebarItem = ({
         isCompleted && isActive && "bg-emerald-200/20"
       )}
     >
-      <section className="flex items-center gap-x-2 py-4">
+      <div className="flex items-center gap-x-2 py-4">
         <Icon
           size={22}
           className={cn(
@@ -53,8 +53,8 @@ export const CourseSidebarItem = ({
           )}
         />
         {label}
-      </section>
-      <span
+      </div>
+      <div
         className={cn(
           "ml-auto opacity-0 border-2 border-gray-700 h-full transition-all",
           isActive && "opacity-100",

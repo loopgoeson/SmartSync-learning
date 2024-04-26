@@ -26,7 +26,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
     },
   });
 
-    const courses = await getCourses({
+  const courses = await getCourses({
     userId,
     ...searchParams,
   });
@@ -38,7 +38,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
       </section>
       <section className="p-6 space-y-6">
         <Categories items={categories} />
-        <CoursesList items={courses} /> 
+        <CoursesList items={courses} />
       </section>
     </>
   );
