@@ -5,7 +5,7 @@ import { Banner } from "@/components/banner";
 
 import { getChapter } from "@/actions/get-chapters";
 import { VideoPlayer } from "./_components/video-player";
-import { File } from "lucide-react";
+import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { Separator } from "@/components/ui/separator";
 import { Preview } from "@/components/preview";
 import { CourseEnrollButton } from "./_components/course-enroll-button";
@@ -66,50 +66,49 @@ const ChapterIdPage = async ({
             completeOnEnd={completeOnEnd}
           />
         </div>
-      </section>
-      <section>
-        <section className="p-4 flex flex-col md:flex-row items-center justify-between">
-          <h2 className="text-2xl font-semibold mb-2">{chapter.title}</h2>
-          {purchase ? (
-            <div>
-              abcd
-              {/* <CourseProgressButton
-                chapterId={params.chapterId}
+        <div>
+          <div className="p-4 flex flex-col md:flex-row items-center justify-between">
+            <h2 className="text-2xl font-semibold mb-2">{chapter.title}</h2>
+            {purchase ? (
+              <div>
+                {/* <CourseProgressButton
+                  chapterId={params.chapterId}
+                  courseId={params.courseId}
+                  nextChapterId={nextChapter?.id}
+                  isCompleted={!!userProgress?.isCompleted}
+                /> */}
+              </div>
+            ) : (
+              <CourseEnrollButton
                 courseId={params.courseId}
-                nextChapterId={nextChapter?.id}
-                isCompleted={!!userProgress?.isCompleted}
-              /> */}
-            </div>
-          ) : (
-            <CourseEnrollButton
-              courseId={params.courseId}
-              price={course.price!}
-            />
+                price={course.price!}
+              />
+            )}
+          </div>
+          <Separator />
+          <div>
+            <Preview value={chapter.description!} />
+          </div>
+          {!!attachments.length && (
+            <>
+              <Separator />
+              <section className="p-4 space-y-2">
+                {attachments.map((attachment) => (
+                  <a
+                    href={attachment.url}
+                    target="_blank"
+                    key={attachment.id}
+                    className="flex gap-x-2 items-center p-3 w-full bg-orange/5 border border-orange/40 text-orange/90 rounded-md hover:underline"
+                  >
+                    <File />
+                    <p className="line-clamp-1">{attachment.name}</p>
+                  </a>
+                ))}
+              </section>
+            </>
           )}
-        </section>
-        <Separator />
-        <article>
-          <Preview value={chapter.description!} />
-        </article>
-        {!!attachments.length && (
-          <>
-            <Separator />
-            <section className="p-4 space-y-2">
-              {attachments.map((attachment) => (
-                <a
-                  href={attachment.url}
-                  target="_blank"
-                  key={attachment.id}
-                  className="flex gap-x-2 items-center p-3 w-full bg-orange/5 border border-orange/40 text-orange/90 rounded-md hover:underline"
-                >
-                  <File />
-                  <p className="line-clamp-1">{attachment.name}</p>
-                </a>
-              ))}
-            </section>
-          </>
-        )}
-      </section>
+        </div>
+      </div>
     </div>
   );
 };
