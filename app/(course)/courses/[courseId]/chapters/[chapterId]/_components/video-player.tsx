@@ -36,12 +36,9 @@ export const VideoPlayer = ({
   const onEnd = async () => {
     try {
       if (completeOnEnd) {
-        await axios.put(
-          `/api/courses/${courseId}/chapters/${chapterId}/progress`,
-          {
-            isCompleted: true,
-          }
-        );
+        await axios.put(`/api/courses/${courseId}/chapters/${chapterId}/progress`, {
+          isCompleted: true,
+        });
 
         if (!nextChapterId) {
           confetti.onOpen();
@@ -51,13 +48,13 @@ export const VideoPlayer = ({
         router.refresh();
 
         if (nextChapterId) {
-          router.push(`/courses/${courseId}/chapters/${nextChapterId}`);
+          router.push(`/courses/${courseId}/chapters/${nextChapterId}`)
         }
       }
     } catch {
       toast.error("Something went wrong");
     }
-  };
+  }
 
   return (
     <section className="relative aspect-video">
