@@ -7,7 +7,7 @@ import { db } from "@/lib/db";
 
 export async function POST(req: Request) {
   const body = await req.text();
-  const signature = headers().get("Stripe-signature") as string;
+  const signature = headers().get("Stripe-Signature") as string;
 
   let event: Stripe.Event;
 
@@ -18,7 +18,7 @@ export async function POST(req: Request) {
       process.env.STRIPE_WEBHOOK_SECRET!
     );
   } catch (error: any) {
-    return new NextResponse(`WebHook Error: ${error.message}`, { status: 400 });
+    return new NextResponse(`Webhook Error: ${error.message}`, { status: 400 });
   }
 
   const session = event.data.object as Stripe.Checkout.Session;
@@ -27,10 +27,11 @@ export async function POST(req: Request) {
 
   if (event.type === "checkout.session.completed") {
     if (!userId || !courseId) {
-      return new NextResponse(`WebHook Error: Missing metadata`, {
+      return new NextResponse(`Webhook Error: Missing metadata`, {
         status: 400,
       });
     }
+
     await db.purchase.create({
       data: {
         courseId: courseId,
@@ -39,9 +40,10 @@ export async function POST(req: Request) {
     });
   } else {
     return new NextResponse(
-      `WebHook Error: Unhandled event type ${event.type}`,
+      `Webhook Error: Unhandled event type ${event.type}`,
       { status: 200 }
     );
   }
+
   return new NextResponse(null, { status: 200 });
 }

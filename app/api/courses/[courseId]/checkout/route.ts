@@ -1,8 +1,9 @@
-import { db } from "@/lib/db";
-import { stripe } from "@/lib/stripe";
+import Stripe from "stripe";
 import { currentUser } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
-import Stripe from "stripe";
+
+import { db } from "@/lib/db";
+import { stripe } from "@/lib/stripe";
 
 export async function POST(
   req: Request,
@@ -14,6 +15,7 @@ export async function POST(
     if (!user || !user.id || !user.emailAddresses?.[0]?.emailAddress) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
+
     const course = await db.course.findUnique({
       where: {
         id: params.courseId,
